@@ -684,41 +684,44 @@
 
     <!-- Hidden Email Template -->
     <div id="email-template" style="display: none;">
-        <div style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; max-width: 600px; margin: 20px auto; background-color: #f4f4f4; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        <div style="font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; max-width: 600px; margin: 20px auto; background-color: #f4f4f4; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
             <img src="https://l.urusai.cc/b146j.png" alt="嶼野山隱 Banner" style="width: 100%; height: auto; display: block;">
             <div style="padding: 24px 30px; color: #333; line-height: 1.6;">
-                <h2 style="font-size: 22px; color: #0d9488; margin-top: 0;">訂單已確認！</h2>
-                <p style="font-size: 16px;">Hi {{to_name}},</p>
-                <p>非常感謝您預訂嶼野山隱露營區！我們已收到您的訂單，以下是您的預訂資訊：</p>
+                <h2 style="font-size: 22px; color: #0d9488; margin-top: 0;">訂單已確認 ✅</h2>
+                <p style="font-size: 16px;">Hi <span data-variable="to_name"></span>,</p>
+                <p>感謝您預訂 <strong>嶼野山隱</strong>！我們已收到並確認您的訂單，以下為您的預訂資訊：</p>
                 <div style="background-color: #ffffff; border-radius: 8px; padding: 20px; margin: 20px 0; border: 1px solid #eee;">
                     <h3 style="margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 18px;">訂單明細</h3>
                     <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                         <tbody>
                             <tr>
                                 <td style="padding: 10px 0; font-weight: bold; width: 100px;">入住日期</td>
-                                <td style="padding: 10px 0; text-align: right;">{{dates}}</td>
+                                <td style="padding: 10px 0; text-align: right;"><span data-variable="dates"></span></td>
                             </tr>
-                            {{room_details_html}}
+                            <tbody data-variable="room_details_html"></tbody>
                             <tr style="border-top: 2px solid #eee; font-size: 18px; font-weight: bold;">
                                 <td style="padding: 16px 0;">總金額</td>
-                                <td style="padding: 16px 0; text-align: right; color: #0d9488;">{{total_price}}</td>
+                                <td style="padding: 16px 0; text-align: right; color: #0d9488;"><span data-variable="total_price"></span></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p>我們將在確認後盡快與您聯繫後續事宜，謝謝您的耐心等候！</p>
+                <p style="margin:18px 0 0;">我們也會持續透過簡訊或 LINE 與您同步相關入住資訊。如需協助，請隨時與我們聯繫，祝旅途愉快！</p>
                 <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
                     <h4 style="color: #0d9488;">重要注意事項</h4>
                     <ul style="padding-left: 20px; font-size: 14px; color: #555; line-height: 1.8;">
-                        <li><b>入住/退房:</b> 15:00 後入住，11:00 前退房。</li>
-                        <li><b>環保政策:</b> 為響應環保，不提供牙刷、牙膏、小毛巾等一次性備品。</li>
-                        <li><b>寵物:</b> 攜帶寵物需提前告知並收取清潔費，且務必遵守寵物入營規定。</li>
-                        <li><b>聯絡方式:</b> 若有任何問題，歡迎加入我們的官方LINE: @356aoexy</li>
+                        <li><strong>入住 / 退房：</strong>15:00 後入住；11:00 前退房。</li>
+                        <li><strong>環保政策：</strong>響應減塑不提供牙刷、牙膏、小毛巾等一次性備品。</li>
+                        <li><strong>寵物規範：</strong>攜帶寵物請先告知，將酌收清潔費；需遵守園區禮節與安全規範。</li>
+                        <li><strong>聯絡方式：</strong>官方 LINE：@356aoexy，或來電 0987-463-866。</li>
                     </ul>
                 </div>
             </div>
-            <div style="background-color: #343a40; color: #adb5bd; text-align: center; padding: 20px; font-size: 12px;">
-                <p style="margin: 0;">嶼野山隱 &copy; 2025 | 聯絡電話: 0987-463-866</p>
+             <div style="text-align: center; padding: 20px 24px 28px;">
+                <a href="https://xiaoliuqiu.wedopr.com/" target="_blank" rel="noopener" style="background:#0d9488; color:#ffffff; padding:14px 22px; display:inline-block; border-radius:999px; font-weight:700; font-size:16px; text-decoration: none;">前往嶼野山隱官網</a>
+            </div>
+            <div style="background-color: #0f172a; color: #cbd5e1; text-align: center; padding: 20px; font-size: 12px;">
+                嶼野山隱 &copy; 2025　|　聯絡電話：0987-463-866
             </div>
         </div>
     </div>
@@ -772,35 +775,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 'quad', name: '【露營屋】四人套房', limit: 4, weekdayPrice: 4600, weekendPrice: 8100, image: 'https://i.urusai.cc/YbaSU.png' }, 
         { id: 'five', name: '【露營屋】五人房（四人雅房+單人床）', limit: 1, weekdayPrice: 5800, weekendPrice: 8100, image: 'https://i.urusai.cc/ZOfHR.png' } 
     ];
-    // 2025-2026 假日、連假及前一晚
-    const HOLIDAYS = [
-        // 2024
-        '2024-12-31',
-        // 2025
-        '2025-01-01', 
-        '2025-01-24', '2025-01-25', '2025-01-26', '2025-01-27', '2025-01-28', '2025-01-29', '2025-01-30', '2025-01-31', '2025-02-01', '2025-02-02',
-        '2025-02-27', '2025-02-28', '2025-03-01', '2025-03-02',
-        '2025-04-02', '2025-04-03', '2025-04-04', '2025-04-05', '2025-04-06',
-        '2025-04-30', '2025-05-01',
-        '2025-05-29', '2025-05-30', '2025-05-31', '2025-06-01',
-        '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29',
-        '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06',
-        '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12',
-        '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26',
-        '2025-12-24', '2025-12-25',
-        '2025-12-31',
-        // 2026
-        '2026-01-01',
-        '2026-02-13', '2026-02-14', '2026-02-15', '2026-02-16', '2026-02-17', '2026-02-18', '2026-02-19', '2026-02-20', '2026-02-21', '2026-02-22',
-        '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01',
-        '2026-04-02', '2026-04-03', '2026-04-04', '2026-04-05', '2026-04-06',
-        '2026-04-30', '2026-05-01', '2026-05-02', '2026-05-03',
-        '2026-06-18', '2026-06-19', '2026-06-20', '2026-06-21',
-        '2026-09-24', '2026-09-25', '2026-09-26', '2026-09-27', '2026-09-28',
-        '2026-10-08', '2026-10-09', '2026-10-10', '2026-10-11',
-        '2026-10-23', '2026-10-24', '2026-10-25', '2026-10-26',
-        '2026-12-24', '2026-12-25', '2026-12-26', '2026-12-27'
-    ];
+    const HOLIDAYS = [ '2024-12-31', '2025-01-01', '2025-01-24', '2025-01-25', '2025-01-26', '2025-01-27', '2025-01-28', '2025-01-29', '2025-01-30', '2025-01-31', '2025-02-01', '2025-02-02', '2025-02-27', '2025-02-28', '2025-03-01', '2025-03-02', '2025-04-02', '2025-04-03', '2025-04-04', '2025-04-05', '2025-04-06', '2025-04-30', '2025-05-01', '2025-05-29', '2025-05-30', '2025-05-31', '2025-06-01', '2025-09-26', '2025-09-27', '2025-09-28', '2025-09-29', '2025-10-03', '2025-10-04', '2025-10-05', '2025-10-06', '2025-10-09', '2025-10-10', '2025-10-11', '2025-10-12', '2025-10-23', '2025-10-24', '2025-10-25', '2025-10-26', '2025-12-24', '2025-12-25', '2025-12-31', '2026-01-01', '2026-02-13', '2026-02-14', '2026-02-15', '2026-02-16', '2026-02-17', '2026-02-18', '2026-02-19', '2026-02-20', '2026-02-21', '2026-02-22', '2026-02-26', '2026-02-27', '2026-02-28', '2026-03-01', '2026-04-02', '2026-04-03', '2026-04-04', '2026-04-05', '2026-04-06', '2026-04-30', '2026-05-01', '2026-05-02', '2026-05-03', '2026-06-18', '2026-06-19', '2026-06-20', '2026-06-21', '2026-09-24', '2026-09-25', '2026-09-26', '2026-09-27', '2026-09-28', '2026-10-08', '2026-10-09', '2026-10-10', '2026-10-11', '2026-10-23', '2026-10-24', '2026-10-25', '2026-10-26', '2026-12-24', '2026-12-25', '2026-12-26', '2026-12-27' ];
     const prevMonthButton = document.getElementById('prev-month');
     const nextMonthButton = document.getElementById('next-month');
     const calendarGrid = document.getElementById('calendar-grid');
@@ -1014,16 +989,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
         
-        const templateHtml = document.getElementById('email-template').innerHTML
-            .replace('{{to_name}}', customerName)
-            .replace('{{dates}}', dateString)
-            .replace('{{room_details_html}}', roomDetailsHtml)
-            .replace('{{total_price}}', `NT$ ${totalCost.toLocaleString()}`);
+        const templateNode = document.getElementById('email-template').cloneNode(true);
+        templateNode.querySelector('[data-variable="to_name"]').textContent = customerName;
+        templateNode.querySelector('[data-variable="dates"]').textContent = dateString;
+        templateNode.querySelector('[data-variable="room_details_html"]').innerHTML = roomDetailsHtml;
+        templateNode.querySelector('[data-variable="total_price"]').textContent = `NT$ ${totalCost.toLocaleString()}`;
 
         const templateParams = {
             to_email: customerEmail,
             subject: `[訂房成功] 您的嶼野山隱訂房確認信`,
-            html_content: templateHtml,
+            html_content: templateNode.innerHTML,
             cc_to: 'wedopr@gmail.com'
         };
 
